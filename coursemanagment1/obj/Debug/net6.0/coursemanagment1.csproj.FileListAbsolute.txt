@@ -1,0 +1,14 @@
+C:\Users\Nuran\source\repos\coursemanagment1\coursemanagment1\obj\Debug\net6.0\coursemanagment1.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Nuran\source\repos\coursemanagment1\coursemanagment1\obj\Debug\net6.0\coursemanagment1.AssemblyInfoInputs.cache
+C:\Users\Nuran\source\repos\coursemanagment1\coursemanagment1\obj\Debug\net6.0\coursemanagment1.AssemblyInfo.cs
+C:\Users\Nuran\source\repos\coursemanagment1\coursemanagment1\obj\Debug\net6.0\coursemanagment1.csproj.CoreCompileInputs.cache
+C:\Users\Nuran\source\repos\coursemanagment1\coursemanagment1\bin\Debug\net6.0\coursemanagment1.exe
+C:\Users\Nuran\source\repos\coursemanagment1\coursemanagment1\bin\Debug\net6.0\coursemanagment1.deps.json
+C:\Users\Nuran\source\repos\coursemanagment1\coursemanagment1\bin\Debug\net6.0\coursemanagment1.runtimeconfig.json
+C:\Users\Nuran\source\repos\coursemanagment1\coursemanagment1\bin\Debug\net6.0\coursemanagment1.dll
+C:\Users\Nuran\source\repos\coursemanagment1\coursemanagment1\bin\Debug\net6.0\coursemanagment1.pdb
+C:\Users\Nuran\source\repos\coursemanagment1\coursemanagment1\obj\Debug\net6.0\coursemanagment1.dll
+C:\Users\Nuran\source\repos\coursemanagment1\coursemanagment1\obj\Debug\net6.0\refint\coursemanagment1.dll
+C:\Users\Nuran\source\repos\coursemanagment1\coursemanagment1\obj\Debug\net6.0\coursemanagment1.pdb
+C:\Users\Nuran\source\repos\coursemanagment1\coursemanagment1\obj\Debug\net6.0\coursemanagment1.genruntimeconfig.cache
+C:\Users\Nuran\source\repos\coursemanagment1\coursemanagment1\obj\Debug\net6.0\ref\coursemanagment1.dll
