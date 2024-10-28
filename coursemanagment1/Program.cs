@@ -12,7 +12,7 @@ namespace coursemanagment1
                 string choice;
                 do
                 {
-                    Console.WriteLine("Secim edin:\n1. Yeni qrup yarat\n2. Qrupların siyahısını goster\n3. Qrup uzerində duzelish etmek\n4. Qrupdakı telebelerin siyahısını goster\n5. Butun telebelerin siyahısını goster\n6. Telebe yarat\n0. Exit");
+                    Console.WriteLine("Secim edin:\n1. Yeni qrup yarat\n2. Qrupların siyahısını goster\n3. Qrup uzerinde duzelish etmek\n4. Qrupdakı telebelerin siyahısını goster\n5. Butun telebelerin siyahısını goster\n6. Telebe yarat\n\n\n0. Exit");
                      choice = Console.ReadLine();
 
                     switch (choice)
