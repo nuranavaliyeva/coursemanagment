@@ -27,7 +27,6 @@ namespace coursemanagment1.Services
             switch (category)
             {
                 case "1":
-                    Console.WriteLine(Category.Programming);
                     newGroup.Category = "Programming";
                     newGroup.No = $"P{count}";
                     count++;
@@ -35,13 +34,11 @@ namespace coursemanagment1.Services
                 case "2":
                     newGroup.Category = "Design";
                     newGroup.No = $"D{count}";
-                    Console.WriteLine(Category.Design);
                     count++;
                     break;
                 case "3":
                     newGroup.Category = "SystemAdministration";
                     newGroup.No = $"S{count}";
-                    Console.WriteLine(Category.SystemAdministration);
                     count++;
                     break;
                 default:
@@ -49,10 +46,10 @@ namespace coursemanagment1.Services
                     goto bashlangic;
             }
 
-            
 
-         first:  Console.WriteLine("Kurs onlinedirmi? (1.Beli, 2.Xeyr)");
-            string online = Console.ReadLine().Substring(0, 1).ToUpper().Trim();
+
+        first: Console.WriteLine("Kurs onlinedirmi? (1.Beli, 2.Xeyr)");
+            string online = Console.ReadLine();
             switch (online)
             {
                 case "1":
@@ -74,16 +71,23 @@ namespace coursemanagment1.Services
 
         public void ShowGroups()
         {
+            if (Groups.Count == 0)
+            {
+                Console.WriteLine("qrup yoxdur");
+            }
             foreach (CourseGroup group in Groups)
             {
                 Console.WriteLine($"Group No: {group.No}, Category: {group.Category}, is online: {group.IsOnline}");
+              
             }
+            
         }
 
         public void EditGroup()
         {
-            Console.WriteLine("Deyishiklik etmek istediyiniz qrup nomresini daxil edin:");
+        EditGroup:    Console.WriteLine("Deyishiklik etmek istediyiniz qrup nomresini daxil edin:");
             string oldNo = Console.ReadLine();
+           
             CourseGroup group = null;
 
             foreach (var g in Groups)
@@ -113,22 +117,24 @@ namespace coursemanagment1.Services
                 if (groupExists)
                 {
                     Console.WriteLine("Bu adda qrup artıq movcuddur.");
+                    goto EditGroup;
                 }
                 else
-                {
+                { 
                     group.No = newNo;
-                    Console.WriteLine("Qrup nomrəsi deyishdirildi.");
+                    Console.WriteLine("Qrup nomresi deyishdirildi.");
                 }
             }
             else
             {
                 Console.WriteLine("Bele bir qrup yoxdur.");
+                goto EditGroup;
             }
         }
 
         public void ShowGroupStudents()
         {
-            Console.WriteLine("Hansı qrupdakı telebelerin siyahısını gostermek isteyirsiniz? Qrup nomresini daxil edin:");
+         ShowAllStudents:   Console.WriteLine("Hansı qrupdakı telebelerin siyahısını gostermek isteyirsiniz? Qrup nomresini daxil edin:");
             string groupNo = Console.ReadLine();
             CourseGroup group = null;
 
@@ -137,27 +143,30 @@ namespace coursemanagment1.Services
                 if (g.No == groupNo)
                 {
                     group = g;
-                    
+
                 }
             }
 
 
-                if (group != null)
+            if (group != null)
+            {
+                foreach (var student in group.Students)
                 {
-                    foreach (var student in group.Students)
-                    {
-                        Console.WriteLine($"Ad: {student.Name}, Soyad: {student.Surname}, Group No: {student.GroupNo}, Online: {student.IsOnline}");
-                    }
-                }
-                else
-                {
-                    Console.WriteLine("Bele bir qrup yoxdur.");
+                    Console.WriteLine($"Ad: {student.Name}, Soyad: {student.Surname}, Group No: {student.GroupNo}, Online: {student.IsOnline}");
                 }
             }
-        
+            else
+            {
+                Console.WriteLine("Bele bir qrup yoxdur.");
+                goto ShowAllStudents;
+            }
+        }
+
 
         public void ShowAllStudents()
         {
+
+            
             foreach (var group in Groups)
             {
                 foreach (var student in group.Students)
@@ -169,11 +178,34 @@ namespace coursemanagment1.Services
 
         public void CreateStudent()
         {
-            Console.WriteLine("Telebenin adını daxil edin:");
-            string name = Console.ReadLine();
-            Console.WriteLine("Telebenin soyadını daxil edin:");
-            string surname = Console.ReadLine();
-            Console.WriteLine("Qrup nomresini daxil edin:");
+           name: Console.WriteLine("Telebenin adını daxil edin:");
+            string name = Console.ReadLine().Trim();
+
+            if (Regex.IsMatch(name, @"^[a-zA-Z]{3,25}$"))
+            {
+                name = char.ToUpper(name[0]) + name.Substring(1).ToLower();
+           
+            }
+            else
+            {
+                Console.WriteLine("Ad yalnız herflerden ibaret olmalı ve uzunlugu 3-den az, 25-den çox olmamalıdır.");
+                goto name;
+            }
+
+                Console.WriteLine("Telebenin soyadını daxil edin:");
+           surname: string surname = Console.ReadLine().Trim();
+            if (Regex.IsMatch(surname, @"^[a-zA-Z]{3,25}$"))
+            {
+                surname = char.ToUpper(surname[0]) + surname.Substring(1).ToLower();
+
+            }
+            else
+            {
+                Console.WriteLine("soyad yalnız herflerden ibaret olmalı ve uzunlugu 3-den az, 25-den çox olmamalıdır.");
+                goto surname;
+                    
+            }
+          qrupno:  Console.WriteLine("Qrup nomresini daxil edin:");
             string groupNo = Console.ReadLine();
             CourseGroup group = null;
 
@@ -187,6 +219,7 @@ namespace coursemanagment1.Services
                 else
                 {
                     Console.WriteLine("bele qrup yoxdur");
+                    goto qrupno;
                 }
             }
 
@@ -201,16 +234,18 @@ namespace coursemanagment1.Services
                 };
 
                 group.Students.Add(newStudent);
-                
+
                 Console.WriteLine("Telebe yaradıldı.");
             }
-            else if (group == null )
+            else if (group == null)
             {
                 Console.WriteLine("Bele bir qrup yoxdur.");
+                goto qrupno;
             }
             else
             {
                 Console.WriteLine("Qrupda kifayet qeder yer yoxdur.");
+                goto qrupno;
             }
 
         }
